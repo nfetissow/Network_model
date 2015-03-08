@@ -1,7 +1,16 @@
 package Elements.ActiveElements;
 
-/**
- * Created by Никита on 08.03.2015.
+import java.util.Collection;
+
+/***
+ * TODO: write useful comment
  */
+
 public class ActiveElement {
+
+
+    public Collection<IPAddress> getIP() {
+        return null;
+    }
+
 }
