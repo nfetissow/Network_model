@@ -64,7 +64,7 @@ public class ActiveElement implements PathElement{
     }
 
     @Override
-    public Collection<ActiveElement> getConnections() {
+    public Collection<PathElement> getConnections() {
         return null;
     }
 
