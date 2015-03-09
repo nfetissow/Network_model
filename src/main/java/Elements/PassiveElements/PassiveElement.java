@@ -26,6 +26,20 @@ public class PassiveElement implements PathElement {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        PassiveElement other = (PassiveElement) obj;
+        if(this.ID != other.getID())
+            return false;
+        return true;
+    }
+
+    @Override
     public double getTimeDelay() {
         return this.timeDelay;
     }
