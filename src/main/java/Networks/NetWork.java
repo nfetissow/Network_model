@@ -3,6 +3,7 @@ package Networks;
 import Elements.PathElement;
 
 import java.util.HashMap;
+import java.util.List;
 
 
 /***
@@ -10,7 +11,7 @@ import java.util.HashMap;
  *
  */
 public interface NetWork {
-    public HashMap<Object, PathElement> getPathElements();
+    public List<PathElement> getPathElements();
 
 
 }
