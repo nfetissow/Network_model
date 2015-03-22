@@ -13,17 +13,32 @@ import java.util.List;
  * Created by nfetissow on 3/12/15.
  */
 public class RouteProviderImpl implements RouteProvider {
-
-
-
-
     @Override
     public List<PathElement> getRoute(Integer firstID, Integer secondID, NetWork net) throws RouteNotFoundException {
 
         PathElement[] elements = null;
         net.getPathElements().toArray(elements);
-        double[][] costsMatrix = new double[elements.length][elements.length];
+        //We need to find where elements between which we are looking for route are situated in our elements array
+        int firstIndex = 0, secondIndex = 0;
+        boolean firstFound = false,
+                secondFound = false;
+        for (int i = 0; i < elements.length; i++) {
+            if(firstFound && secondFound) {
+                break;
+            }
+            if(elements[i].getID() == firstID) {
+                firstIndex = i;
+                firstFound = true;
+            } else if (elements[i].getID() == secondID) {
+                secondIndex = i;
+                secondFound = true;
+            }
+        }
+        if(! firstFound && secondFound) {
+            throw new RouteNotFoundException("Can't find elements with given IDs in the net");
+        }
 
+        double[][] costsMatrix = new double[elements.length][elements.length];
         //Filling costsMatrix with values
         PathElement element;
         for (int i = 0; i < elements.length; i++) {
@@ -37,9 +52,6 @@ public class RouteProviderImpl implements RouteProvider {
                 }
             }
         }
-
-        int firstIndex, secondIndex;
-
         //Then using matrix we use Dijkstra's algorithm to find a route;
         List<Integer> almostRoute = Dijkstra.getShortestPathFromTo(firstIndex, secondIndex, costsMatrix);
         List<PathElement> route = new ArrayList<PathElement>();
