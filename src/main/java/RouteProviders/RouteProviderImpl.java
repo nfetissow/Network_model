@@ -1,8 +1,10 @@
 package RouteProviders;
 
 import Elements.PathElement;
+import GraphProcessing.Dijkstra;
 import Networks.NetWork;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -36,11 +38,15 @@ public class RouteProviderImpl implements RouteProvider {
             }
         }
 
-
+        int firstIndex, secondIndex;
 
         //Then using matrix we use Dijkstra's algorithm to find a route;
-
-        return null;
+        List<Integer> almostRoute = Dijkstra.getShortestPathFromTo(firstIndex, secondIndex, costsMatrix);
+        List<PathElement> route = new ArrayList<PathElement>();
+        for (int i = 0; i < almostRoute.size(); i++) {
+            route.add(elements[almostRoute.get(i)]);
+        }
+        return route;
     }
 
     @Override
