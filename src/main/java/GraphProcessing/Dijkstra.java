@@ -5,9 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 
-/**
- * Created by Никита on 22.03.2015.
- */
 public class Dijkstra {
     public static void computePaths(Vertex source)
     {

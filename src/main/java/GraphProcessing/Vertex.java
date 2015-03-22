@@ -1,8 +1,5 @@
 package GraphProcessing;
 
-/**
- * Created by Никита on 22.03.2015.
- */
 class Vertex implements Comparable<Vertex>
 {
     public final int index;

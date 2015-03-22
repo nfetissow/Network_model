@@ -5,13 +5,8 @@ import GraphProcessing.Dijkstra;
 import Networks.NetWork;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by nfetissow on 3/12/15.
- */
 public class RouteProviderImpl implements RouteProvider {
     @Override
     public List<PathElement> getRoute(Integer firstID, Integer secondID, NetWork net) throws RouteNotFoundException {
@@ -26,10 +21,10 @@ public class RouteProviderImpl implements RouteProvider {
             if(firstFound && secondFound) {
                 break;
             }
-            if(elements[i].getID() == firstID) {
+            if(elements[i].getID().equals(firstID)) {
                 firstIndex = i;
                 firstFound = true;
-            } else if (elements[i].getID() == secondID) {
+            } else if (elements[i].getID().equals(secondID)) {
                 secondIndex = i;
                 secondFound = true;
             }
